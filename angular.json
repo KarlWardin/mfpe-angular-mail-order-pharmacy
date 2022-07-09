@@ -195,5 +195,7 @@
       }
     }
   },
-  "defaultProject": "MailOrderPharmacy"
+  "cli": {
+    "analytics": "1ececdaa-9688-45fc-bb04-6ae508934148"
+  }
 }
