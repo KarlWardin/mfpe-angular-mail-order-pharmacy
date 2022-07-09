@@ -27,7 +27,9 @@ export class LoginModuleComponent implements OnInit {
     'valid': false
   };
   constructor(private userService: UserService, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['home']);
+    }
   }
 
 

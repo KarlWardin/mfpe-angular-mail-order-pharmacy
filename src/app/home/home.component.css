@@ -1,3 +1,22 @@
 .home{
     text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.title{
+    font-weight: bolder;
+    color: white;
+    text-shadow: 2px 2px black;
+    text-decoration: underline;
+}
+.home-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: large;
+    font-weight: bold;
+    justify-content:center;
+}
+.username{
+    color: blue;
+    text-shadow: 1px 1px black;
 }
