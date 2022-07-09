@@ -21,7 +21,7 @@ constructor(private router:Router,public serve:AuthService)
   logout() {
     localStorage.removeItem("token");
 
-    console.log('removed')
+    console.log('User has been logged out from the system');
     this.router.navigate(['/']);
   }
   
