@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './auth.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +8,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MailOrderPharmacy';
+  title: string = 'Mail Order Pharmacy';
 
-constructor(private router:Router,public serve:AuthService)
-{
-  
-}
+  constructor(private router: Router, public serve: AuthService) {
+
+  }
 
 
 
   logout() {
     localStorage.removeItem("token");
+    this.serve.logout();
 
     console.log('User has been logged out from the system');
     this.router.navigate(['/']);
   }
-  
+
 
 
 
