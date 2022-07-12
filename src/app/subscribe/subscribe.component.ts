@@ -11,43 +11,42 @@ import { AuthService } from '../auth.service';
 })
 export class SubscribeComponent implements OnInit {
   msg !: string;
-  todayDate: Date=new Date();
-  prescriptionDetails : PrescriptionDetails={ 'prescriptionId' : 1,
-    'memberId' : 'admin',
-  'memberLocation' : '',
-  'policyNumber' : '',
-  'insuranceProvider' : '',
-  'prescriptionDate' : this.todayDate,
-  'drugName' : '',
-  'dosageDefinition' : 'morning',
-  'quantity' : 0,
-  'courseDuration' : 0,
-  'doctorName' : '',
-};
-  constructor(private route: ActivatedRoute, private service: SubscribeService, private router:Router,private authService:AuthService) { 
-   
-    if(!this.authService.isLoggedIn()){
+  todayDate: string = new Date().toISOString().split("T")[0];
+  prescriptionDetails: PrescriptionDetails = {
+    'prescriptionId': 1,
+    'memberId': 'admin',
+    'memberLocation': '',
+    'policyNumber': '',
+    'insuranceProvider': '',
+    'prescriptionDate': new Date(),
+    'drugName': '',
+    'dosageDefinition': 'morning',
+    'quantity': 0,
+    'courseDuration': 0,
+    'doctorName': '',
+  };
+  constructor(private route: ActivatedRoute, private subscribeService: SubscribeService, private router: Router, private authService: AuthService) {
+
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate([""]);
-    } 
-   }
+    }
+  }
 
   ngOnInit(): void {
   }
-  public cities:string[]=['Bangalore','Chennai','Hyderabad','Pune']
-  public meds:string[]=['Paracetmol','Citrazine','Aspirin']
-  public insurances:string[]=['Aditya Birla','Bajaj Allianz','Bharti AXA','IFFCO Tokio']
-handleSubmit()
-{
-  console.log(this.prescriptionDetails);
-  this.service.savePrescription(this.prescriptionDetails).subscribe(data=>
-    {
-     // this.msg=data
+  public cities: string[] = ['Bangalore', 'Chennai', 'Hyderabad', 'Pune']
+  public meds: string[] = ['Paracetmol', 'Citrazine', 'Aspirin']
+  public insurances: string[] = ['Aditya Birla', 'Bajaj Allianz', 'Bharti AXA', 'IFFCO Tokio']
+  handleSubmit() {
+    console.log(this.prescriptionDetails);
+    this.subscribeService.savePrescription(this.prescriptionDetails).subscribe(data => {
+      // this.msg=data
       console.log('in data')
-     
-    },error => {
-      this.msg = "You have successfully subscribed to "+this.prescriptionDetails.drugName;
+
+    }, error => {
+      this.msg = "You have successfully subscribed to " + this.prescriptionDetails.drugName;
       //this.router.navigate(['subscriptions'])
     })
-}
+  }
 
 }

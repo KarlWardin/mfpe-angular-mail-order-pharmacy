@@ -14,7 +14,7 @@ export class AllDrugsComponent implements OnInit {
 
   drugLocation:DrugLocationDetails[]=[];
   drugs:DrugDetails[]=[]
-  constructor(private eservice:DrugsService,private route:Router,private authService:AuthService) {
+  constructor(private drugservice:DrugsService,private route:Router,private authService:AuthService) {
     
    
    }
@@ -26,7 +26,7 @@ export class AllDrugsComponent implements OnInit {
   getAllDrugs()
   {
     this.drugs=[]
-    this.eservice.getAllDrugs().subscribe(data=>
+    this.drugservice.getAllDrugs().subscribe(data=>
       {
         
         this.drugs=data as DrugDetails[];

@@ -13,7 +13,7 @@ import { RefillDue } from "./refill-due";
 export class RefillStatusService {
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = "http://localhost:8454/refillappdb"
+  baseUrl: string = "https://ij024pod3refillapp-container.azurewebsites.net/refillapp"
 
   //making call to api,getting customer by subID
   getAllRefillStatus(id:number): Observable<RefillStatus[]> {

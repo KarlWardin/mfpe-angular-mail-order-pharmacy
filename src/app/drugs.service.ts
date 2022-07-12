@@ -11,7 +11,7 @@ export class DrugsService {
 
   constructor(private http:HttpClient) { }
 
-  baseUrl:string='http://localhost:8081/drugdetailapp'
+  baseUrl:string='https://ij024pod3drugdetailapp-container.azurewebsites.net/drugdetailapp'
 
   getAllDrugs():Observable<DrugDetails[]>
   {

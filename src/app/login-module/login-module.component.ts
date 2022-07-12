@@ -27,8 +27,8 @@ export class LoginModuleComponent implements OnInit {
     'valid': false
   };
   constructor(private userService: UserService, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['home']);
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['']);
     }
   }
 
@@ -41,38 +41,28 @@ export class LoginModuleComponent implements OnInit {
   // if returns false then call logout from auth-service in angular
   onLogin(custForm: NgForm) {
 
-    console.log(custForm.value.userid);
-    console.log(custForm.value.password);
-
     this.user.userid = custForm.value.userid;
     this.user.upassword = custForm.value.password;
     this.user.uname = custForm.value.userid;
 
     this.userService.loginMember(this.user).subscribe(data => {
       this.errMsg = '';
-      console.log(data);
-
       this.userDtls = data as UserDetails;
-      localStorage.setItem("userId", this.userDtls.userid);
-      localStorage.setItem("token", this.userDtls.authToken);
-      console.log(this.userDtls.authToken);
       let response = this.userService.validateToken(this.userDtls.authToken);
       response.subscribe(data1 => {
-        console.log(data1);
         this.authResponse = data1 as AuthenticationResponse;
         console.log(this.authResponse.name, this.authResponse.valid);
         if (this.authResponse.valid) {
-          console.log("true valid");
-          this.authService.login()
-
+          localStorage.setItem("userId", this.userDtls.userid);
+          localStorage.setItem("token", this.userDtls.authToken);
+          this.authService.login();
         }
         else {
-          console.log("false valid");
           this.authService.logout();
         }
+
         if (this.authService.isLoggedIn()) {
-          localStorage.setItem('userId', this.authResponse.userid);
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         }
 
       });

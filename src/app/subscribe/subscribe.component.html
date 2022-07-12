@@ -11,13 +11,13 @@
         </select>
 
         <label>Policy Number</label>
-        <input type="text" id="policyNum" name="policyNum" [(ngModel)]='prescriptionDetails.policyNumber' class="form-control" placeholder="Policy Number" pattern="[P]{1}[1-9]{1}" >
+        <input type="text" id="policyNum" name="policyNum" [(ngModel)]='prescriptionDetails.policyNumber' class="form-control" placeholder="Eg. ABC123" pattern="[A-Z]{3}[1-9]{3}" >
 
         <label>Doctor Name</label>
-        <input type="text" id="dName" name="dName" [(ngModel)]='prescriptionDetails.doctorName' class="form-control" placeholder="Doctor name" pattern="^[a-zA-Z_ ]*$" required>
+        <input type="text" id="dName" name="dName" [(ngModel)]='prescriptionDetails.doctorName' class="form-control" placeholder="Eg. Mr. Sharma" required>
 
         <label>Prescription Date</label>
-        <input type="date" id="pDate" name="pDate" [(ngModel)]='prescriptionDetails.prescriptionDate' class="form-control" placeholder="Prescription Date" max='2021-08-02' required>
+        <input type="date" id="pDate" name="pDate" [(ngModel)]='prescriptionDetails.prescriptionDate' class="form-control" placeholder="Prescription Date" max='{{todayDate}}' required>
 
         <label>Location</label>
         <select class="form-control" name="ecity" [(ngModel)]='prescriptionDetails.memberLocation' id="ecity">
@@ -34,7 +34,7 @@
         <input type="number" id="qty" name="qty" [(ngModel)]='prescriptionDetails.quantity' class="form-control" placeholder="Quantity" min="1" required>
 
         <label>Course Duration</label>
-        <input type="number" id="duration" name="duration" [(ngModel)]='prescriptionDetails.courseDuration' class="form-control" placeholder="Course Duration" min="2" required>
+        <input type="number" id="duration" name="duration" [(ngModel)]='prescriptionDetails.courseDuration' class="form-control" placeholder="Min 2" min="2" required>
 
 
         <br>

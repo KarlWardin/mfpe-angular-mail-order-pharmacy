@@ -10,7 +10,7 @@ export class SubscribeService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:8082/subscriptionapi'
+  baseUrl: string = 'https://ij024pod3subscriptionapp-container.azurewebsites.net/subscriptionapp'
 
   getAllSubscriptions(mId: string) {
     let token=localStorage.getItem("token")

@@ -4,7 +4,7 @@
     <div class="form-group form">
         <label>Prescription Date</label>
         <input type="date" id="pDate" name="pDate" 
-            class="form-control" placeholder="Prescription Date" max='2021-08-06' [(ngModel)]='date' required>
+            class="form-control" placeholder="Prescription Date" max='{{todayDate}}' [(ngModel)]='date' required>
             <br>
             <p align:right>
                 <button class="btn btn-success" type="submit">Submit</button>
